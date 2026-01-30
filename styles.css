@@ -16,6 +16,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
+    opacity: 0; /* Start hidden for GSAP fade */
 }
 
 .navbar ul {
@@ -39,29 +40,31 @@ body {
     padding: 100px 20px;
     background-color: #007bff;
     color: white;
+    opacity: 0; /* Start hidden */
 }
 
 .profile-img {
     width: 200px;
     border-radius: 50%;
+    opacity: 0;
+    transform: translateY(50px); /* Start below */
 }
 
 section {
     padding: 50px 20px;
-}
-
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    opacity: 0;
+    transform: translateY(50px);
 }
 
 .project {
     background: white;
-    padding: 10px;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.9);
 }
 
 .project:hover {
@@ -73,6 +76,20 @@ section {
     width: 100%;
     height: auto;
     border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
 }
 
 form {
@@ -80,6 +97,8 @@ form {
     flex-direction: column;
     max-width: 400px;
     margin: 0 auto;
+    opacity: 0;
+    transform: translateX(-50px); /* Start left for slide */
 }
 
 input, textarea, button {
@@ -94,9 +113,11 @@ input:focus, textarea:focus {
 
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px;
     background-color: #333;
     color: white;
+    opacity: 0;
+    transform: translateY(50px);
 }
 
 /* Media queries */
@@ -107,7 +128,9 @@ footer {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    [data-aos] {
+    * {
+        opacity: 1 !important;
+        transform: none !important;
         transition: none !important;
     }
 }
